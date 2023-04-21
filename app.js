@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
     }
 )
 
+app.get('/about', (req, res) => {
+    res.send('Some general information')
+})
+
 app.get('/calculate-the-average-of-5-and-10', (request, response) => {
     const number1 = 5
     const number2 = 10
@@ -18,7 +22,7 @@ app.get('/calculate-the-average-of-5-and-10', (request, response) => {
 })
 
 app.get('/qr', (req, res) => {
-    res.send('You can now input your vcard')
+    res.send('Some general information')
 }) 
 
 app.post('/qr', (req, res) => {
