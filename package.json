@@ -563,5 +563,8 @@
   "bugs": {
     "url": "https://github.com/maxonary/website-q-rnold.eu/issues"
   },
-  "homepage": "https://github.com/maxonary/website-q-rnold.eu#readme"
+  "homepage": "https://github.com/maxonary/website-q-rnold.eu#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
 }
