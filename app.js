@@ -29,6 +29,20 @@ app.post('/qr', (req, res) => {
     res.send('Thank you for submitting your information, this is your qr-code')
 })
 
+
+app.get('/cookies/:id', (request, response) => {
+  const cookieId = request.params.id
+
+  response.send(`You chose the cookie with the ID of ${cookieId}`)
+})
+
+app.get('/users/:userId/tasks/:taskId', (request, response) => {
+  const userId = request.params.userId
+  const taskId = request.params.taskId
+
+  response.send(`The user ID is ${userId} and the task ID is ${taskId}`)
+})
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`)
     console.log(`http://localhost:${port}`)
