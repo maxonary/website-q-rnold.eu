@@ -1,4 +1,5 @@
-import express, { response } from 'express'
+import cons from 'consolidate'
+import express, { request, response } from 'express'
 //same as const express = require('express')
 
 const app = express()
@@ -29,11 +30,35 @@ app.post('/qr', (req, res) => {
     res.send('Thank you for submitting your information, this is your qr-code')
 })
 
+app.post('/pq-formula', (request, response) => {
+    const y = `x^2 - 3x + 4`
+    const p = 3
+    const q = 1.5
+    response.send(`PQ-Formula of ${y} is calculated to x=${(-p)/2 + Math.sqrt((p/2)**2 - q)}`)
+})
 
-app.get('/cookies/:id', (request, response) => {
-  const cookieId = request.params.id
+app.get(`/cookies`, (request, response) => {
+    response.send(`The cookies are all over, so this is the collection`)
+})
 
-  response.send(`You chose the cookie with the ID of ${cookieId}`)
+app.get('/cookies/:slug', (request, response) => {
+  const cookieID = request.params.slug
+
+  const cookies = [
+        ["chocolate-chip", "Cocolate Chip","A tasty, sugary cookie filled with chocolate chips.", 3.50],
+        ["white-chocolate", "White Chocolate", "A tasty, sugary cookie made of white chocolate.", 3.95], 
+        ["vegan", "Vegan", "A not so tasty, sugary cookie that is based on plant products.", 2.35]
+    ];
+
+    if (cookies.some(arr => arr.includes(cookieID)) == true) {
+        const cookie = cookies.find(arr => arr.includes(cookieID))
+        const name = cookie[1]
+        const description = cookie[2]
+        const price = cookie[3]
+        response.send(`You chose a ${name} Cookie and the ID of ${cookieID}: ${description}. It costs $${price}.`)
+    } else {
+        response.send(`A cookie with the name "${cookieID}" could not be found.`)
+    }
 })
 
 app.get('/users/:userId/tasks/:taskId', (request, response) => {
