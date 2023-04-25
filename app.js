@@ -1,10 +1,14 @@
 import cons from 'consolidate'
 import express, { request, response } from 'express'
 //same as const express = require('express')
+import { logger } from './middlewares/logger.js'
+import { authenticator } from './middlewares/authenticator.js'
 
 const app = express()
 const port = 3000
 
+app.use(logger)
+app.use(authenticator)
 
 app.get('/', (req, res) => {
     res.send('Welcome to qr-nold. My name is Arnold and I am a QR code generator.')
