@@ -12,4 +12,9 @@ p {
 }
 img {
   width: 50%;
+  cursor: pointer;
+}
+
+.small-font {
+  font-size: 0.8em;
 }

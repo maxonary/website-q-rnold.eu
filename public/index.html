@@ -4,13 +4,24 @@
     <meta charset="utf-8">
     <title>QR-nold | QR Contact scan</title>
     <link rel="stylesheet" href="../css/style.css">
+    <script>
+      function download() {
+        var link = document.createElement('a')
+        link.download = 'maximilian_arnold.vcf'
+        link.href = '../assets/maximilian_arnold.vcf'
+        link.click()
+      }
+      src="js/logger.js"
+      
+    </script>
   </head>
   <body>
     <div>
       <h1>QR-nold</h1>
       <h2>Scan the qr-code to add me as a contact<h2>
       <p>Do as displayed here:</p>
-      <img src="../assets/scan-hand.jpg" alt="qr-code-scan-image">
+      <img src="../assets/scan-hand.jpg" alt="qr-code-scan-image" onclick="download()">
+      <p class="small-font">Or click on the picture to add Max as a contact<p>
     </div>
   </body>
 </html>
