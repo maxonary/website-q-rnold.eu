@@ -12,11 +12,22 @@ app.use(logger)
 
 // app.use('/assets', express.static('public'))
 app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
 
-app.get('/', (req, res) => {
-    res.send('Welcome to qr-nold. My name is Arnold and I am a QR code generator.')
-    }
-)
+
+app.get('/', (request, response) => {
+    response.send('Welcome to qr-nold. My name is Arnold and I am a QR code generator.')
+})
+
+app.get('/search', (request, response) => {
+    let searchQuery = request.query.q
+    response.send(`Search results: ${searchQuery}`)
+})
+
+app.post('/submit', (request, response) => {
+    console.log('Contact form submission', request.body)
+    response.send('Thank you for your message. We will get back to you soon.')
+})
 
 app.get('/about', (req, res) => {
     res.send('Some general information')
