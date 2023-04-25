@@ -10,6 +10,7 @@ const port = 3000
 app.use(logger)
 // app.use(authenticator)
 
+// app.use('/assets', express.static('public'))
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
