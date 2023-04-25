@@ -8,7 +8,7 @@ const app = express()
 const port = 3000
 
 app.use(logger)
-app.use(authenticator)
+// app.use(authenticator)
 
 app.get('/', (req, res) => {
     res.send('Welcome to qr-nold. My name is Arnold and I am a QR code generator.')
