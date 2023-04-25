@@ -21,12 +21,22 @@ app.get('/', (request, response) => {
 
 app.get('/search', (request, response) => {
     let searchQuery = request.query.q
-    response.send(`Search results: ${searchQuery}`)
+    response.status(200).send(`Search results: ${searchQuery}`)
 })
 
 app.post('/submit', (request, response) => {
     console.log('Contact form submission', request.body)
-    response.send('Thank you for your message. We will get back to you soon.')
+    response.send('<h1>Thank you for your message.</h1><p>We will get back to you soon.</p>')
+})
+
+app.get('/api/v1/submit', (request, response) => {
+    response.json({
+        cookies: [
+            { name: 'chocolate-chip', price: 3.50 },
+            { name: 'white-chocolate', price: 3.95 },
+            { name: 'vegan', price: 2.35 }
+        ]
+    })
 })
 
 app.get('/about', (req, res) => {
