@@ -45,7 +45,9 @@ app.post('/pq-formula', (request, response) => {
 })
 
 app.get(`/cookies`, (request, response) => {
-    response.send(`The cookies are all over, so this is the collection`)
+    console.log(request.query)
+
+    response.send(`The cookies are all over the place, so this is the collection`)
 })
 
 app.get('/cookies/:slug', (request, response) => {
