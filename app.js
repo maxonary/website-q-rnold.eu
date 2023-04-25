@@ -2,7 +2,7 @@ import cons from 'consolidate'
 import express, { request, response } from 'express'
 //same as const express = require('express')
 import { logger } from './middlewares/logger.js'
-import { authenticator } from './middlewares/authenticator.js'
+// import { authenticator } from './middlewares/authenticator.js'
 
 const app = express()
 const port = 3000
