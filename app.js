@@ -79,14 +79,15 @@ app.get(`/cookies`, (request, response) => {
     response.send(`The cookies are all over the place, so this is the collection`)
 })
 
+const cookies = [
+    ["chocolate-chip", "Cocolate Chip","A tasty, sugary cookie filled with chocolate chips.", 3.50],
+    ["white-chocolate", "White Chocolate", "A tasty, sugary cookie made of white chocolate.", 3.95],
+    ["vegan", "Vegan", "A not so tasty, sugary cookie that is based on plant products.", 2.35]
+];
+
+
 app.get('/cookies/:slug', (request, response) => {
   const cookieID = request.params.slug
-
-  const cookies = [
-        ["chocolate-chip", "Cocolate Chip","A tasty, sugary cookie filled with chocolate chips.", 3.50],
-        ["white-chocolate", "White Chocolate", "A tasty, sugary cookie made of white chocolate.", 3.95], 
-        ["vegan", "Vegan", "A not so tasty, sugary cookie that is based on plant products.", 2.35]
-    ];
 
     if (cookies.some(arr => arr.includes(cookieID)) == true) {
         const cookie = cookies.find(arr => arr.includes(cookieID))
@@ -112,11 +113,6 @@ app.get('/api/v1/cookies', (request, response) => {
 app.get('/api/v1/cookies/:slug', (request, response) => {
     const cookieID = request.params.slug
 
-    const cookies = [
-        ["chocolate-chip", "Cocolate Chip","A tasty, sugary cookie filled with chocolate chips.", 3.50],
-        ["white-chocolate", "White Chocolate", "A tasty, sugary cookie made of white chocolate.", 3.95],
-        ["vegan", "Vegan", "A not so tasty, sugary cookie that is based on plant products.", 2.35]
-    ];
 
     if (cookies.some(arr => arr.includes(cookieID)) == true) {
         const cookie = cookies.find(arr => arr.includes(cookieID))
