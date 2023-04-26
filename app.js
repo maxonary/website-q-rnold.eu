@@ -100,6 +100,44 @@ app.get('/cookies/:slug', (request, response) => {
 })
 
 app.get('/api/v1/cookies', (request, response) => {
+    response.json({
+        cookies: [
+            { name: 'chocolate-chip', price: 3.50 },
+            { name: 'white-chocolate', price: 3.95 },
+            { name: 'vegan', price: 2.35 }
+        ]
+    })
+})
+
+app.get('/api/v1/cookies/:slug', (request, response) => {
+    const cookieID = request.params.slug
+
+    const cookies = [
+        ["chocolate-chip", "Cocolate Chip","A tasty, sugary cookie filled with chocolate chips.", 3.50],
+        ["white-chocolate", "White Chocolate", "A tasty, sugary cookie made of white chocolate.", 3.95],
+        ["vegan", "Vegan", "A not so tasty, sugary cookie that is based on plant products.", 2.35]
+    ];
+
+    if (cookies.some(arr => arr.includes(cookieID)) == true) {
+        const cookie = cookies.find(arr => arr.includes(cookieID))
+        const name = cookie[1]
+        const description = cookie[2]
+        const price = cookie[3]
+        response.json({
+            cookie: {
+                name: name,
+                description: description,
+                price: price
+            }
+        })
+    } else {
+        response.json({
+            error: {
+                message: `A cookie with the name "${cookieID}" could not be found.`
+            }
+        })
+    }
+})
 
 app.get('/users/:userId/tasks/:taskId', (request, response) => {
   const userId = request.params.userId
