@@ -7,16 +7,20 @@ import { logger } from './middlewares/logger.js'
 const app = express()
 const port = 3000
 
+app.set('view engine', 'ejs')
+
+app.set('views', 'views')
+
+// app.use(express.static('public'))
+// app.use(express.urlencoded({ extended: true }))
+
 app.use(logger)
 // app.use(authenticator)
 
 // app.use('/assets', express.static('public'))
-app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }))
-
 
 app.get('/', (request, response) => {
-    response.send('Welcome to qr-nold. My name is Arnold and I am a QR code generator.')
+    response.render('index')
 })
 
 app.get('/search', (request, response) => {
