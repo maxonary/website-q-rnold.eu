@@ -1,0 +1,20 @@
+div {
+  text-align: center;
+}
+h1 {
+  font-size: 3em;
+}
+h2 {
+  font-size: 1.5em;
+}
+p {
+  font-size: 1.2em;
+}
+img {
+  width: 50%;
+  cursor: pointer;
+}
+
+.small-font {
+  font-size: 0.8em;
+}
