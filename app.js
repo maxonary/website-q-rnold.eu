@@ -133,7 +133,8 @@ app.get('/api/v1/cookies/:slug', (request, response) => {
     } else {
         response.json({
             error: {
-                message: `A cookie with the name "${cookieID}" could not be found.`
+                message: `A cookie with the name "${cookieID}" could not be found.`,
+                status: 404
             }
         })
     }
