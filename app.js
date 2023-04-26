@@ -26,7 +26,10 @@ app.get('/search', (request, response) => {
 
 app.post('/submit', (request, response) => {
     console.log('Contact form submission', request.body)
-    response.send('<h1>Thank you for your message.</h1><p>We will get back to you soon.</p>')
+    response.send(`
+    <h1>Thank you for your message.</h1>
+    <p>We will get back to you soon.</p>
+    `)
 })
 
 app.get('/api/v1/submit', (request, response) => {
@@ -39,7 +42,11 @@ app.get('/api/v1/submit', (request, response) => {
     })
 })
 
-app.get('/about', (req, res) => {
+app.get('/about', (request, response) => {
+    res.send('Some general information')
+})
+
+app.get('/contact/', (request, response) => {
     res.send('Some general information')
 })
 
@@ -50,12 +57,13 @@ app.get('/calculate-the-average-of-5-and-10', (request, response) => {
     response.send(`The avarage of ${number1} and ${number2} is ${average}`)
 })
 
-app.get('/qr', (req, res) => {
-    res.send('Some general information')
+app.get('/qr', (request, response) => {
+    response.send('Some general information')
 }) 
 
-app.post('/qr', (req, res) => {
+app.post('/qr', (request, response) => {
     res.send('Thank you for submitting your information, this is your qr-code')
+    res.sendFile(__dirname + '/public/qr.html')
 })
 
 app.post('/pq-formula', (request, response) => {
@@ -90,6 +98,8 @@ app.get('/cookies/:slug', (request, response) => {
         response.send(`A cookie with the name "${cookieID}" could not be found.`)
     }
 })
+
+app.get('/api/v1/cookies', (request, response) => {
 
 app.get('/users/:userId/tasks/:taskId', (request, response) => {
   const userId = request.params.userId
